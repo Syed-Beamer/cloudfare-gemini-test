@@ -108,6 +108,10 @@ const marketingRoutesSchema = {
 const validateAppRoutes = ajv.compile(appRoutesSchema);
 const validateMarketingRoutes = ajv.compile(marketingRoutesSchema);
 
+app.get("/health", (req,res) => {
+  res.send("Running")
+});
+
 app.post("/app_routes", (req, res) => {
   const isValid = validateAppRoutes(req.body);
   if (!isValid) {
